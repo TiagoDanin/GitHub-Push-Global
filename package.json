@@ -18,7 +18,10 @@
     "push",
     "github"
   ],
-  "scripts": {},
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
   "private": false,
   "github": {
     "name": "GitHub-Push-Global",
@@ -34,6 +37,8 @@
   "dependencies": {
     "@octokit/rest": "16.12.0",
     "axios": "0.18.0",
-    "yargs": "12.0.5"
-  }
+    "yargs": "12.0.5",
+    "snyk": "^1.161.1"
+  },
+  "snyk": true
 }
