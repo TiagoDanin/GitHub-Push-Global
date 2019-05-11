@@ -105,7 +105,7 @@ github-push-global \
 
 <span class="hljs-comment"># Plugin</span>
 github-push-global \
-	--plugin=<span class="hljs-string">"plugin-example.js"</span> \
+	--plugin=<span class="hljs-string">"examples/trust-packages.js"</span> \
 	--to=<span class="hljs-string">"code.js"</span> \
 	--github=<span class="hljs-string">"tiagodanin"</span> \
 	--commit=<span class="hljs-string">"Hello World"</span> \
@@ -115,22 +115,26 @@ github-push-global \
 <h3 id="api-plugin"><a href="#api-plugin">API Plugin</a></h3>
 <p>See examples in /examples</p>
 <p><code>Structure</code></p>
-<pre><code class="hljs language-js"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function">(<span class="hljs-params">ctx</span>) =></span> {
+<pre><code class="hljs language-js"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">ctx</span> =></span> {
 	<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span> <span class="hljs-comment">// Disable: git push</span>
 	<span class="hljs-keyword">return</span> ctx.raw <span class="hljs-comment">// String: file raw</span>
 	<span class="hljs-keyword">return</span> ctx.data <span class="hljs-comment">// Object: if is .JSON or is .YAML</span>
 }</code></pre>
-<h4 id="ctx"><a href="#ctx">ctx</a></h4>
+<h4 id="ctx-example"><a href="#ctx-example"><code>ctx</code> example</a></h4>
 <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> ctx = {
 	<span class="hljs-attr">repo</span>: {
-		<span class="hljs-attr">owner</span>: <span class="hljs-string">''</span>,
-		<span class="hljs-attr">name</span>: <span class="hljs-string">''</span>
+		<span class="hljs-attr">owner</span>: <span class="hljs-string">'Tiago Danin'</span>,
+		<span class="hljs-attr">name</span>: <span class="hljs-string">'GitHub-Push-Global'</span>
 	},
 	<span class="hljs-attr">data</span>: {
+		<span class="hljs-attr">name</span>: <span class="hljs-string">'GitHub-Push-Global'</span>
+		<span class="hljs-comment">// ... //</span>
 		<span class="hljs-comment">// If file is JSON or YML, load data here</span>
 	},
-	<span class="hljs-attr">raw</span>: <span class="hljs-string">''</span>,
-	<span class="hljs-attr">argv</span>: {} <span class="hljs-comment">// Argv CLI</span>
+	<span class="hljs-attr">raw</span>: <span class="hljs-string">'{"name": "GitHub-Push-Global"}'</span>,
+	<span class="hljs-attr">argv</span>: {
+		<span class="hljs-attr">op</span>: <span class="hljs-literal">true</span>
+	} <span class="hljs-comment">// Argv CLI</span>
 }</code></pre>
 <h2 id="tests"><a href="#tests">Tests</a></h2>
 <p>To run the test suite, first install the dependencies, then run <code>test</code>:</p>
