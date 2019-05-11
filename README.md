@@ -1,6 +1,6 @@
 # GitHub Push Global
 
-[![Node](https://img.shields.io/node/v/github-push-global.svg?style=flat-square)](https://npmjs.org/package/github-push-global) [![Version](https://img.shields.io/npm/v/github-push-global.svg?style=flat-square)](https://npmjs.org/package/github-push-global) [![Downloads](https://img.shields.io/npm/dt/github-push-global.svg?style=flat-square)](https://npmjs.org/package/github-push-global) 
+[![Travis](https://img.shields.io/travis/TiagoDanin/GitHub-Push-Global.svg?branch=master&style=flat-square)](https://travis-ci.org/TiagoDanin/GitHub-Push-Global) [![XO code style](https://img.shields.io/badge/code%20style-XO-red.svg?style=flat-square)](https://github.com/xojs/xo) [![Node](https://img.shields.io/node/v/github-push-global.svg?style=flat-square)](https://npmjs.org/package/github-push-global) [![Version](https://img.shields.io/npm/v/github-push-global.svg?style=flat-square)](https://npmjs.org/package/github-push-global) [![Downloads](https://img.shields.io/npm/dt/github-push-global.svg?style=flat-square)](https://npmjs.org/package/github-push-global) 
 
 Commit in all repositories with a command
 
@@ -32,7 +32,7 @@ github-push-global \
 
 # Plugin
 github-push-global \
-	--plugin="plugin-example.js" \
+	--plugin="examples/trust-packages.js" \
 	--to="code.js" \
 	--github="tiagodanin" \
 	--commit="Hello World" \
@@ -48,25 +48,29 @@ See examples in /examples
 `Structure`
 
 ```js
-module.exports = (ctx) => {
+module.exports = ctx => {
 	return false // Disable: git push
 	return ctx.raw // String: file raw
 	return ctx.data // Object: if is .JSON or is .YAML
 }
 ```
 
-#### ctx
+#### `ctx` example
 ```js
 const ctx = {
 	repo: {
-		owner: '',
-		name: ''
+		owner: 'Tiago Danin',
+		name: 'GitHub-Push-Global'
 	},
 	data: {
+		name: 'GitHub-Push-Global'
+		// ... //
 		// If file is JSON or YML, load data here
 	},
-	raw: '',
-	argv: {} // Argv CLI
+	raw: '{"name": "GitHub-Push-Global"}',
+	argv: {
+		op: true
+	} // Argv CLI
 }
 ```
 
