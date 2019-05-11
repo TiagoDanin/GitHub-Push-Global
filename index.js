@@ -162,10 +162,15 @@ const plugin = (param, input) => {
 	return output
 }
 
+let perPage = 100
+if (argv.dev) {
+	perPage = 1
+}
+
 console.log('[>] Get list of repos')
 github.repos.listForUser({
 	username: owner,
-	per_page: 100 // eslint-disable-line camelcase
+	per_page: perPage // eslint-disable-line camelcase
 }).then(async repos => {
 	const param = {
 		owner,
@@ -176,6 +181,9 @@ github.repos.listForUser({
 	for (const repo of repos.data) {
 		console.log(`[+] Check repo: ${repo.name}`)
 		param.repo = repo.name
+		if (argv.dev) {
+			param.repo = 'testgithub'
+		}
 		await github.repos.getContents(param).then(res => {
 			const {sha} = res.data
 			const inputContent = Buffer.from(res.data.content, 'base64').toString()

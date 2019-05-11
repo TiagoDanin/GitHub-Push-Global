@@ -22,7 +22,29 @@ const trust = [
 	'nuxt',
 	'uikit',
 	'nodemon',
-	'node-fetch'
+	'node-fetch',
+	'@nuxtjs/axios',
+	'@nuxtjs/vuetify',
+	'env-cmd',
+	'npx',
+	'cron',
+	'similarity',
+	'jformat',
+	'os-tmpdir',
+	'meow',
+	'update-notifier',
+	'bytelabel',
+	'chart.js',
+	'expect.js',
+	'webpack',
+	'webpack-cli',
+	'esprima',
+	'gettext-parser',
+	'@vuikit/icons',
+	'@vuikit/theme',
+	'vuikit',
+	'node-notifier',
+	'polybar-helpers'
 ]
 
 const noPin = deps => {
