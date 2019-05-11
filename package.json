@@ -50,16 +50,18 @@
 	"dependencies": {
 		"@octokit/rest": "16.25.3",
 		"axios": "^0.18.0",
+		"js-yaml": "3.9.0",
 		"meow": "^5.0.0",
 		"update-notifier": "^3.0.0"
 	},
 	"devDependencies": {
-		"xo": "0.24.0"
+		"xo": "^0.24.0"
 	},
 	"xo": {
 		"rules": {
 			"quote-props": "warn",
 			"eqeqeq": "warn",
+			"no-await-in-loop": "warn",
 			"array-callback-return": "warn",
 			"require-atomic-updates": "warn",
 			"no-else-return": "off"
