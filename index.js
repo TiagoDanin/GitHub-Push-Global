@@ -184,6 +184,7 @@ github.repos.listForUser({
 		if (argv.dev) {
 			param.repo = 'testgithub'
 		}
+
 		await github.repos.getContents(param).then(res => {
 			const {sha} = res.data
 			const inputContent = Buffer.from(res.data.content, 'base64').toString()
