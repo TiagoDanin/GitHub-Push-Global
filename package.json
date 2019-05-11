@@ -1,44 +1,69 @@
 {
-  "name": "github-push-global",
-  "main": "index.js",
-  "version": "1.0.0",
-  "description": "Commit in all repositories with a command",
-  "author": {
-    "name": "Tiago Danin",
-    "email": "TiagoDanin@outlook.com",
-    "url": "https://TiagoDanin.github.io"
-  },
-  "bin": {
-    "github-push-global": "index.js"
-  },
-  "license": "MIT",
-  "keywords": [
-    "api",
-    "git",
-    "push",
-    "github"
-  ],
-  "scripts": {
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
-  },
-  "private": false,
-  "github": {
-    "name": "GitHub-Push-Global",
-    "owner": "TiagoDanin"
-  },
-  "files": [
-    "LICENSE",
-    "README.md",
-    "index.js",
-    "package.json"
-  ],
-  "devDependencies": {},
-  "dependencies": {
-    "@octokit/rest": "16.12.0",
-    "axios": "0.18.0",
-    "yargs": "12.0.5",
-    "snyk": "^1.161.1"
-  },
-  "snyk": true
+	"name": "github-push-global",
+	"main": "index.js",
+	"bin": {
+		"github-push-global": "index.js"
+	},
+	"preferGlobal": true,
+	"version": "1.0.0",
+	"description": "Commit in all repositories with a command",
+	"author": {
+		"email": "TiagoDanin@outlook.com",
+		"name": "Tiago Danin",
+		"url": "https://TiagoDanin.github.io"
+	},
+	"license": "MIT",
+	"keywords": [
+		"git",
+		"github",
+		"github-app",
+		"github-tools",
+		"global",
+		"push"
+	],
+	"scripts": {
+		"start": "node index.js",
+		"test": "xo"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"private": false,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TiagoDanin/GitHub-Push-Global.git"
+	},
+	"homepage": "https://TiagoDanin.github.io/GitHub-Push-Global",
+	"bugs": {
+		"url": "https://github.com/TiagoDanin/GitHub-Push-Global/issues"
+	},
+	"github": {
+		"name": "GitHub-Push-Global",
+		"owner": "TiagoDanin"
+	},
+	"files": [
+		"LICENSE",
+		"README.md",
+		"index.js",
+		"package.json"
+	],
+	"dependencies": {
+		"@octokit/rest": "16.12.0",
+		"axios": "^0.18.0",
+		"meow": "^5.0.0",
+		"update-notifier": "^3.0.0"
+	},
+	"devDependencies": {
+		"xo": "0.24.0"
+	},
+	"xo": {
+		"rules": {
+			"quote-props": "warn",
+			"eqeqeq": "warn",
+			"array-callback-return": "warn",
+			"require-atomic-updates": "warn",
+			"no-else-return": "off"
+		},
+		"semicolon": false
+	}
 }
