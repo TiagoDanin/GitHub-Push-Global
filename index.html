@@ -82,31 +82,78 @@ baseURL: https://tiagodanin.github.io
 
 <div class="uk-container">
 	<h1 id="github-push-global"><a href="#github-push-global">GitHub Push Global</a></h1>
+<p><a href="https://npmjs.org/package/github-push-global"><img src="https://img.shields.io/node/v/github-push-global.svg?style=flat-square" alt="Node"></a> <a href="https://npmjs.org/package/github-push-global"><img src="https://img.shields.io/npm/v/github-push-global.svg?style=flat-square" alt="Version"></a> <a href="https://npmjs.org/package/github-push-global"><img src="https://img.shields.io/npm/dt/github-push-global.svg?style=flat-square" alt="Downloads"></a> </p>
 <p>Commit in all repositories with a command</p>
+<h2 id="installation"><a href="#installation">Installation</a></h2>
+<p>Module available through the <a href="https://www.npmjs.com/">npm registry</a>. It can be installed using the  <a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm</code></a> or <a href="https://yarnpkg.com/en/"><code>yarn</code></a> command line tools.</p>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># NPM</span>
+npm install github-push-global --global
+<span class="hljs-comment"># Or Using Yarn</span>
+yarn global add github-push-global</code></pre>
 <h2 id="usage"><a href="#usage">Usage</a></h2>
-<pre><code class="hljs language-bash">$ github-push-global \
+<pre><code class="hljs language-sh"><span class="hljs-comment"># Show Help</span>
+github-push-global --<span class="hljs-built_in">help</span>
+
+<span class="hljs-comment"># Basic</span>
+github-push-global \
 	--file=<span class="hljs-string">"code.js"</span> \
 	--to=<span class="hljs-string">"code.js"</span> \
-	--github=tiagodanin \
+	--github=<span class="hljs-string">"tiagodanin"</span> \
 	--commit=<span class="hljs-string">"Hello World"</span> \
-	--mode=replace/create \
-	--token=<span class="hljs-string">"abcdf1234567890"</span> \</code></pre>
-<h2 id="installation"><a href="#installation">Installation</a></h2>
-<p>This is a <a href="https://nodejs.org/">Node.js</a> module available through the
-<a href="https://www.npmjs.com/">npm registry</a>. It can be installed using the
-<a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm</code></a>
-or
-<a href="https://yarnpkg.com/en/"><code>yarn</code></a>
-command line tools.</p>
-<pre><code class="hljs language-sh">npm install github-push-global --global</code></pre>
+	--mode=<span class="hljs-string">"replace"</span> \
+	--token=<span class="hljs-string">"abcdf1234567890"</span>
+
+<span class="hljs-comment"># Plugin</span>
+github-push-global \
+	--plugin=<span class="hljs-string">"plugin-example.js"</span> \
+	--to=<span class="hljs-string">"code.js"</span> \
+	--github=<span class="hljs-string">"tiagodanin"</span> \
+	--commit=<span class="hljs-string">"Hello World"</span> \
+	--mode=<span class="hljs-string">"replace"</span> \
+	--token=<span class="hljs-string">"abcdf1234567890"</span></code></pre>
+<h2 id="documentation"><a href="#documentation">Documentation</a></h2>
+<h3 id="api-plugin"><a href="#api-plugin">API Plugin</a></h3>
+<p>See examples in /examples</p>
+<p><code>Structure</code></p>
+<pre><code class="hljs language-js"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function">(<span class="hljs-params">ctx</span>) =></span> {
+	<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span> <span class="hljs-comment">// Disable: git push</span>
+	<span class="hljs-keyword">return</span> ctx.raw <span class="hljs-comment">// String: file raw</span>
+	<span class="hljs-keyword">return</span> ctx.data <span class="hljs-comment">// Object: if is .JSON or is .YAML</span>
+}</code></pre>
+<h4 id="ctx"><a href="#ctx">ctx</a></h4>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> ctx = {
+	<span class="hljs-attr">repo</span>: {
+		<span class="hljs-attr">owner</span>: <span class="hljs-string">''</span>,
+		<span class="hljs-attr">name</span>: <span class="hljs-string">''</span>
+	},
+	<span class="hljs-attr">data</span>: {
+		<span class="hljs-comment">// If file is JSON or YML, load data here</span>
+	},
+	<span class="hljs-attr">raw</span>: <span class="hljs-string">''</span>,
+	<span class="hljs-attr">argv</span>: {} <span class="hljs-comment">// Argv CLI</span>
+}</code></pre>
+<h2 id="tests"><a href="#tests">Tests</a></h2>
+<p>To run the test suite, first install the dependencies, then run <code>test</code>:</p>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># NPM</span>
+npm <span class="hljs-built_in">test</span>
+<span class="hljs-comment"># Or Using Yarn</span>
+yarn <span class="hljs-built_in">test</span></code></pre>
 <h2 id="dependencies"><a href="#dependencies">Dependencies</a></h2>
 <ul>
 <li><a href="https://ghub.io/@octokit/rest">@octokit/rest</a>: GitHub REST API client for Node.js</li>
 <li><a href="https://ghub.io/axios">axios</a>: Promise based HTTP client for the browser and node.js</li>
-<li><a href="https://ghub.io/yargs">yargs</a>: yargs the modern, pirate-themed, successor to optimist.</li>
+<li><a href="https://ghub.io/js-yaml">js-yaml</a>: YAML 1.2 parser and serializer</li>
+<li><a href="https://ghub.io/meow">meow</a>: CLI app helper</li>
+<li><a href="https://ghub.io/update-notifier">update-notifier</a>: Update notifications for your CLI app</li>
 </ul>
+<h2 id="dev-dependencies"><a href="#dev-dependencies">Dev Dependencies</a></h2>
+<ul>
+<li><a href="https://ghub.io/xo">xo</a>: JavaScript happiness style linter ❤️</li>
+</ul>
+<h2 id="contributors"><a href="#contributors">Contributors</a></h2>
+<p>Pull requests and stars are always welcome. For bugs and feature requests, please <a href="https://github.com/TiagoDanin/GitHub-Push-Global/issues">create an issue</a>. <a href="https://github.com/TiagoDanin/GitHub-Push-Global/graphs/contributors">List of all contributors</a>.</p>
 <h2 id="license"><a href="#license">License</a></h2>
-<p>MIT</p>
+<p><a href="LICENSE">MIT</a> © <a href="https://TiagoDanin.github.io">Tiago Danin</a></p>
 
 
 	<hr class="uk-margin-top-remove uk-divider-icon">
