@@ -48,7 +48,7 @@
 		"package.json"
 	],
 	"dependencies": {
-		"@octokit/rest": "16.25.3",
+		"@octokit/rest": "16.25.4",
 		"axios": "^0.18.0",
 		"js-yaml": "3.13.1",
 		"meow": "^5.0.0",
