@@ -104,6 +104,7 @@ const isJson = input => {
 	try {
 		return JSON.parse(input)
 	} catch (error) {
+		console.error('[!] Error:', error)
 		return false
 	}
 }
@@ -117,6 +118,7 @@ const isYaml = input => {
 
 		return false
 	} catch (error) {
+		console.error('[!] Error:', error)
 		return false
 	}
 }
@@ -149,14 +151,18 @@ const plugin = (param, input) => {
 	const output = p(ctx)
 	if (!output) {
 		return input
-	} else if (typeof output === 'object') {
+	}
+
+	if (typeof output === 'object') {
 		if (json) {
 			return JSON.stringify(output, null, '\t')
-		} else if (yaml) {
-			return YAML.safeDump()
-		} else {
-			return input
 		}
+
+		if (yaml) {
+			return YAML.safeDump()
+		}
+
+		return input
 	}
 
 	return output
@@ -185,6 +191,7 @@ github.repos.listForUser({
 			param.repo = 'testgithub'
 		}
 
+		// eslint-disable-next-line no-await-in-loop
 		await github.repos.getContents(param).then(res => {
 			const {sha} = res.data
 			const inputContent = Buffer.from(res.data.content, 'base64').toString()
@@ -203,7 +210,9 @@ github.repos.listForUser({
 			if (mode === 'create') {
 				console.log(`[+] Create file: ${repo.name}`)
 				return github.repos.createFile(param)
-			} else if (mode === 'replace') {
+			}
+
+			if (mode === 'replace') {
 				console.log(`[!] File not found: ${repo.name}`)
 				return
 			}

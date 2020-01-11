@@ -48,7 +48,7 @@ const trust = [
 ]
 
 const noPin = deps => {
-	Object.keys(deps).map(dep => {
+	Object.keys(deps).map(dep => { // eslint-disable-line array-callback-return
 		if (trust.includes(dep)) {
 			if (!deps[dep].startsWith('^')) {
 				deps[dep] = `^${deps[dep]}`
