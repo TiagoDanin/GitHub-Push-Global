@@ -5,7 +5,7 @@
 		"github-push-global": "index.js"
 	},
 	"preferGlobal": true,
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Commit in all repositories with a command",
 	"author": {
 		"email": "TiagoDanin@outlook.com",
