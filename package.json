@@ -49,7 +49,7 @@
 	],
 	"dependencies": {
 		"@octokit/rest": "17.9.2",
-		"axios": "^0.19.2",
+		"axios": "^0.20.0",
 		"js-yaml": "3.14.0",
 		"meow": "^6.1.1",
 		"update-notifier": "^4.1.0"
