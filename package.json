@@ -52,7 +52,7 @@
 		"axios": "^0.20.0",
 		"js-yaml": "3.14.0",
 		"meow": "^6.1.1",
-		"update-notifier": "^5.0.0"
+		"update-notifier": "^5.1.0"
 	},
 	"devDependencies": {
 		"xo": "^0.33.1"
